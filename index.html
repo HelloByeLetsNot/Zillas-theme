@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zilla's Charity Concert</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1></h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="banner-image">
+    
+    <div class="hero-content">
+      <h2>Welcome to Zilla's Charity Concert</h2>
+      <p>Join us for an unforgettable night of music, culture, and celebration!</p>
+      <div class="ticket-container">
+        <div class="ticket-form">
+          <label for="ticketQuantity">Quantity:</label>
+          <input type="number" id="ticketQuantity" min="1" value="1" onchange="updatePrice()">
+        </div>
+        <div class="ticket-form">
+          <button onclick="purchaseTickets()" class="btn">Get Tickets</button>
+        </div>
+      </div>
+      <div id="totalCost" class="total-cost">Total Cost: $15.00</div><script>
+        function updatePrice() {
+          const ticketPrice = 15; // Price per ticket
+          const quantity = parseInt(document.getElementById("ticketQuantity").value);
+          const total = (ticketPrice * quantity).toFixed(2);
+          document.getElementById("totalCost").innerHTML = `Total Cost: $${total}`;
+        }
+
+        function purchaseTickets() {
+          const quantity = parseInt(document.getElementById("ticketQuantity").value);
+          const price = (quantity * 15).toFixed(2); // Price per ticket
+          const paypalLink = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_BUSINESS_EMAIL&currency_code=USD&amount=${price}&item_name=Zilla's Charity Concert Ticket`;
+          window.open(paypalLink);
+        }
+      </script>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Information about Zilla's Charity Concert organizers goes here...</p>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <p>Date, time, and location of Zilla's Charity Concert goes here...</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Contact form for inquiries or feedback goes here...</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Zilla's Charity Concert. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
